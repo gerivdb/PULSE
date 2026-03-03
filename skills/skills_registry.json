@@ -1,0 +1,47 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "PULSE",
+  "last_updated": "2026-03-03T03:13:00Z",
+  "skills": [
+    {
+      "skill_id": "monitor_health",
+      "name": "Monitor Health",
+      "category": "monitoring",
+      "entry_point": "skills/monitor_health.py",
+      "description": "Check service health endpoints",
+      "parameters": {
+        "service": "str",
+        "url": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.95
+    },
+    {
+      "skill_id": "collect_metrics",
+      "name": "Collect Metrics",
+      "category": "metrics",
+      "entry_point": "skills/collect_metrics.py",
+      "description": "Gather performance metrics from services",
+      "parameters": {
+        "service": "str",
+        "metrics_endpoint": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.93
+    },
+    {
+      "skill_id": "dispatch_alerts",
+      "name": "Dispatch Alerts",
+      "category": "alerting",
+      "entry_point": "skills/dispatch_alerts.py",
+      "description": "Send alerts to multiple channels",
+      "parameters": {
+        "alert": "Dict[str, Any]",
+        "channels": "List[str]"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.94
+    }
+  ],
+  "total_skills": 3
+}

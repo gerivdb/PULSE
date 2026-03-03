@@ -1,0 +1,82 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "PULSE",
+  "last_updated": "2026-03-03T03:13:00Z",
+  "managers": [
+    {
+      "manager_id": "daemon_manager",
+      "name": "DaemonManager",
+      "type": "daemon_orchestration",
+      "entry_point": "managers/daemon_manager.py",
+      "confidence": 0.95,
+      "description": "Manages background monitoring tasks",
+      "daemons": [
+        {
+          "daemon_id": "health_monitor",
+          "name": "HealthMonitorDaemon",
+          "interval": 30,
+          "description": "Monitor service health endpoints (30s)"
+        },
+        {
+          "daemon_id": "alert_dispatcher",
+          "name": "AlertDispatcherDaemon",
+          "interval": 10,
+          "description": "Dispatch queued alerts (10s)"
+        },
+        {
+          "daemon_id": "metrics_collector",
+          "name": "MetricsCollectorDaemon",
+          "interval": 60,
+          "description": "Collect performance metrics (1min)"
+        }
+      ]
+    },
+    {
+      "manager_id": "skill_manager",
+      "name": "SkillManager",
+      "type": "skill_orchestration",
+      "entry_point": "managers/skill_manager.py",
+      "confidence": 0.95,
+      "description": "Orchestrates monitoring and alerting skills",
+      "features": [
+        "skill_execution",
+        "skill_registry",
+        "skill_validation"
+      ]
+    },
+    {
+      "manager_id": "alert_manager",
+      "name": "AlertManager",
+      "type": "alert_management",
+      "entry_point": "managers/alert_manager.py",
+      "confidence": 0.94,
+      "description": "Alert routing and escalation",
+      "features": [
+        "alert_routing",
+        "escalation_policies",
+        "rate_limiting",
+        "deduplication"
+      ]
+    },
+    {
+      "manager_id": "metrics_aggregator",
+      "name": "MetricsAggregator",
+      "type": "metrics_processing",
+      "entry_point": "managers/metrics_aggregator.py",
+      "confidence": 0.93,
+      "description": "Time-series metrics processing",
+      "features": [
+        "metrics_recording",
+        "metrics_querying",
+        "aggregation",
+        "anomaly_detection"
+      ]
+    }
+  ],
+  "dependencies": {
+    "internal": ["DevTools"],
+    "external": ["prometheus_client", "influxdb"]
+  },
+  "total_managers": 4,
+  "total_daemons": 3
+}
